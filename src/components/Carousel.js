@@ -7,38 +7,38 @@ class Carousel extends Component {
   carouselControlPrevious = (event) => {
     event.preventDefault();
     this.setState({
-      selectedItem: this.state.selectedItem - 1 < 0 ? this.props.itens.length - 1 : this.state.selectedItem - 1
+      selectedItem: this.state.selectedItem - 1 < 0 ? this.props.slides.length - 1 : this.state.selectedItem - 1
     });
   };
   carouselControlNext = (event) => {
     event.preventDefault();
     this.setState({
-      selectedItem: this.state.selectedItem + 1 >= this.props.itens.length ? 0 : this.state.selectedItem + 1
+      selectedItem: this.state.selectedItem + 1 >= this.props.slides.length ? 0 : this.state.selectedItem + 1
     });
   };
   handleIndicatorClick = (index) => {
     this.setState({ selectedItem: index });
   }
   render() {
-    const itensIndicator = this.props.itens.map((iten) => {
-      const classNames = this.state.selectedItem === iten.id ? "active" : "";
+    const itensIndicator = this.props.slides.map((slide) => {
+      const classNames = this.state.selectedItem === slide.id ? "active" : "";
       return (
         <li
           data-target="#carouselExampleIndicators"
-          data-slide-to={iten.id}
+          data-slide-to={slide.id}
           className={classNames}
-          onClick={() => this.handleIndicatorClick(iten.id)}
+          onClick={() => this.handleIndicatorClick(slide.id)}
         />
       )
     });
-    const itensInner = this.props.itens.map((iten) => {
-      const classNames = this.state.selectedItem === iten.id ? "carousel-item active" : "carousel-item";
+    const itensInner = this.props.slides.map((slide) => {
+      const classNames = this.state.selectedItem === slide.id ? "carousel-item active" : "carousel-item";
       return (
         <div className={classNames}>
           <img
             className="d-block img-fluid"
-            src={iten.image}
-            alt={iten.name}
+            src={slide.image}
+            alt={slide.name}
           />
         </div>
       )
