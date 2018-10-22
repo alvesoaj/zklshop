@@ -5,7 +5,11 @@ import MainPanel from './MainPanel';
 
 class Container extends Component {
   state = {
-    categories: ['Bla Bla Bla', 'Foo Foo Foo', 'Pop Pop Pop'],
+    categories: [
+      {id: 1, name: 'Bla Bla Bla'},
+      {id: 2, name: 'Foo Foo Foo'},
+      {id: 3, name: 'Pop Pop Pop'}
+    ],
     slides: [
       { id: 0, name: 'First slide', image: 'https://picsum.photos/900/350/?image=0' },
       { id: 1, name: 'Second slide', image: 'https://picsum.photos/900/350/?image=1' },

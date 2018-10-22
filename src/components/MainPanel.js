@@ -8,7 +8,7 @@ class MainPanel extends Component {
     const items = this.props.items.map((item) => {
       return(
         <Item
-          id={item.id}
+          key={item.id}
           name={item.name}
           image={item.image}
           price={item.price}

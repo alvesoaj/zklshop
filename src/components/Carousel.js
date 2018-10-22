@@ -24,6 +24,7 @@ class Carousel extends Component {
       const classNames = this.state.selectedItem === slide.id ? "active" : "";
       return (
         <li
+          key={slide.id}
           data-target="#carouselExampleIndicators"
           data-slide-to={slide.id}
           className={classNames}
@@ -34,7 +35,7 @@ class Carousel extends Component {
     const itensInner = this.props.slides.map((slide) => {
       const classNames = this.state.selectedItem === slide.id ? "carousel-item active" : "carousel-item";
       return (
-        <div className={classNames}>
+        <div key={slide.id} className={classNames}>
           <img
             className="d-block img-fluid"
             src={slide.image}

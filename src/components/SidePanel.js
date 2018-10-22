@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class SidePanel extends Component {
   render() {
     const categories = this.props.categories.map((category) => (
-      <a href="/" className="list-group-item">{category}</a>
+      <a href="/" key={category.id} className="list-group-item">{category.name}</a>
     ));
     return (
       <div className="col-lg-3">
