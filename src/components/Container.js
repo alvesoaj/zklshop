@@ -24,6 +24,23 @@ class Container extends Component {
       { id: 5, name: 'Item Six', image: 'https://picsum.photos/700/400/?image=106', price: 754.99, description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!', rate: 61 }
     ]
   };
+  componentDidMount() {
+    this.loadFromServer();
+  }
+  loadFromServer = () => {
+    window.client.getCategories((serverCategories) => {
+        return (
+          this.setState({ categories: serverCategories.categories })
+        )
+      }
+    );
+    window.client.getItems((serverItems) => {
+        return (
+          this.setState({ items: serverItems.items })
+        )
+      }
+    );
+  };
   render() {
     return (
       <div className="container">
