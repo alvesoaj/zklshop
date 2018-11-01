@@ -15,8 +15,12 @@ window.client = (function () {
       .then(success);
   }
 
-  function getItems(success) {
-    return fetch(endpoint + '/api/items', {
+  function getItems(success, category_id, order, per, page) {
+    query = '?per=' + per + '&page=' + page + '&q[s]=' + order + '';
+    if (category_id != null) {
+      query += '&q[product_category_id_eq]=' + category_id;
+    }
+    return fetch(endpoint + '/api/items' + query, {
       headers: {
         Accept: 'application/json',
         Authorization: 'Bearer ' + token,
