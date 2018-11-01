@@ -5,12 +5,14 @@ import { Link } from 'react-router-dom';
 class SidePanel extends Component {
   render() {
     const categories = this.props.categories.map((category) => (
-      <a
-        href="#"
+      <Link
+        to="/"
         key={category.id}
         className="list-group-item"
         onClick={(event) => this.props.onCategoryChosen(event, category.id)}
-      >{category.name}</a>
+      >
+        {category.name}
+      </Link>
     ));
     return (
       <div className="col-lg-3">
@@ -25,13 +27,13 @@ class SidePanel extends Component {
           <li className="list-group-item d-flex justify-content-between active">
             <h4>Categories</h4>
             <h4>
-              <a
-                href="#"
+              <Link
+                to="/"
                 onClick={(event) => this.props.onCategoryChosen(event, null)}
                 className="text-white"
               >
                 <i class="fas fa-broom"></i>
-              </a>
+              </Link>
             </h4>
           </li>
           {categories}

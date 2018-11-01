@@ -50,7 +50,7 @@ class Container extends Component {
     );
   };
   onCategoryChosen = (event, category_id) => {
-    event.preventDefault();
+    // event.preventDefault();
     this.setState({ selectedCategory: category_id })
     window.client.getItems((serverItems) => (
         this.setState({ items: serverItems.items })
