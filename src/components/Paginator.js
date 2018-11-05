@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
+
 class Paginator extends Component {
   render() {
     const pagesCount = Math.ceil(this.props.itemsCount / this.props.itemsPer);
@@ -8,20 +10,46 @@ class Paginator extends Component {
     const pages = [...Array(pagesCount)].map((e, i) => {
       const liClasses = this.props.itemsPage === i + 1 ? 'page-item active' : 'page-item';
       return (
-        <li className={liClasses}>
-          <a className="page-link" href="#" onClick={(event) => this.props.onChangePage(event, i + 1)}>{i + 1}</a>
+        <li className={liClasses} key={i + 1}>
+          <Link
+            to={`?p=${i + 1}`}
+            className='page-link'
+            onClick={(event) => this.props.onChangePage(event, i + 1)}
+          >
+            {i + 1}
+          </Link>
         </li>
       )
     });
-    return (
-      <nav aria-label="Page navigation example">
-        <ul className="pagination">
-          <li className={previosButtonCasses}><a className="page-link" href="#" onClick={(event) => this.props.onChangePage(event, this.props.itemsPage - 1)}>Previous</a></li>
-          {pages}
-          <li className={nextButtonCasses}><a className="page-link" href="#" onClick={(event) => this.props.onChangePage(event, this.props.itemsPage + 1)}>Next</a></li>
-        </ul>
-      </nav>
-    );
+    if (pages.length > 1) {
+      return (
+        <nav aria-label="Page navigation example">
+          <ul className="pagination">
+            <li className={previosButtonCasses}>
+              <Link
+                to={`?p=${this.props.itemsPage - 1}`}
+                className='page-link'
+                onClick={(event) => this.props.onChangePage(event, this.props.itemsPage - 1)}
+              >
+                Previous
+              </Link>
+            </li>
+            {pages}
+            <li className={nextButtonCasses}>
+              <Link
+                to={`?p=${this.props.itemsPage + 1}`}
+                className='page-link'
+                onClick={(event) => this.props.onChangePage(event, this.props.itemsPage + 1)}
+              >
+                Next
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      );
+    } else {
+      return null;
+    }
   }
 }
 

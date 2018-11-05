@@ -32,8 +32,8 @@ class Item extends Component {
               </Link>
             </h5>
             <h5 className="d-flex justify-content-between">
-              <spam>${this.props.price}</spam>
-              <i class="fas fa-cart-plus"></i>
+              <strong>${this.props.price}</strong>
+              <i className="fas fa-cart-plus"></i>
             </h5>
             <p className="card-text">{this.props.description.substring(0, 100)}...</p>
           </div>

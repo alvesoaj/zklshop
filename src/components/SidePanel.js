@@ -6,10 +6,9 @@ class SidePanel extends Component {
   render() {
     const categories = this.props.categories.map((category) => (
       <Link
-        to="/"
+        to={`/${category.slug}`}
         key={category.id}
         className="list-group-item"
-        onClick={(event) => this.props.onCategoryChosen(event, category.id)}
       >
         {category.name}
       </Link>
@@ -29,10 +28,9 @@ class SidePanel extends Component {
             <h4>
               <Link
                 to="/"
-                onClick={(event) => this.props.onCategoryChosen(event, null)}
                 className="text-white"
               >
-                <i class="fas fa-broom"></i>
+                <i className="fas fa-broom"></i>
               </Link>
             </h4>
           </li>

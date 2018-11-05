@@ -15,10 +15,10 @@ window.client = (function () {
       .then(success);
   }
 
-  function getItems(success, category_id, order, per, page) {
+  function getItems(success, categorySlug, order, per, page) {
     query = '?per=' + per + '&page=' + page + '&q[s]=' + order + '';
-    if (category_id != null) {
-      query += '&q[product_category_id_eq]=' + category_id;
+    if (categorySlug != null) {
+      query += '&q[product_category_slug_eq]=' + categorySlug;
     }
     return fetch(endpoint + '/api/items' + query, {
       headers: {
